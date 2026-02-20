@@ -95,7 +95,7 @@ calculate.integrative.similarity.matrix <- function(
 
 		# calculate distances and fill in patient by patient distance matrix
 		for (dist.op in 1:length(dist.calc.operations)) {
-			if (class(dist.metrics[[data.type]]) == 'character') {
+			if (is.character(dist.metrics[[data.type]])) {
 
 				if (dist.metrics[[data.type]] %in% c('pearson', 'spearman')) {
 					# if the distance metric is a correlation, convert the correlation into a distance
@@ -114,7 +114,7 @@ calculate.integrative.similarity.matrix <- function(
 						);
 					}
 				}
-			else if (class(dist.metrics[[data.type]]) == 'function') {
+			else if (is.function(dist.metrics[[data.type]])) {
 				dist.result <- as.dist((dist.metrics[[data.type]])(t(data.matrices[[data.type]][, intersect(colnames(dist.metrics[[data.type]]), unique(c(dist.calc.operations[dist.op][[1]], patients.for.correlations)))])));
 				}
 			else {
