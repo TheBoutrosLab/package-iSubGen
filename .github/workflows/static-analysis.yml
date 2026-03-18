@@ -2,20 +2,16 @@
 name: CI
 
 on:
-  - push
-  - pull_request
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   static-analysis:
     runs-on: ubuntu-latest
 
-    timeout-minutes: 15
-
     steps:
-      # Checkout codebase
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      # Run CICD-base
-      - name: CICD-base
-        uses: docker://ghcr.io/uclahs-cds/cicd-base:latest
+      - uses: theboutroslab/tool-static-analysis@v1
