@@ -1,12 +1,12 @@
 ---
-name: CICD-base
+name: CI
 
 on:
   - push
   - pull_request
 
 jobs:
-  CICD-base:
+  static-analysis:
     runs-on: ubuntu-latest
 
     timeout-minutes: 15
